@@ -20,7 +20,7 @@ spring:
       uri: http://localhost:8888 # config server url
       request-connect-timeout: 5000
       request-read-timeout: 5000
-      fail-fast: true # failed to start if cannot connect to config server
+      fail-fast: false # failed to start if cannot connect to config server
       retry:
         max-attempts: 6
         initial-interval: 1000
