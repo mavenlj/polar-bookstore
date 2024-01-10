@@ -114,9 +114,9 @@
 					</image>
 					<docker>
 						<publishRegistry>
-							<username>${registryUserName}</username>
-							<password>${registryToken}</password>
-							<url>${registryUrl}</url>
+							<username>mavenlj</username>
+							<password>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</password>
+							<url>ghcr.io</url>
 						</publishRegistry>
 					</docker>
 				</configuration>
