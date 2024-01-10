@@ -1,5 +1,11 @@
 name: Commit Stage
 on: push
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: mavenlj/catalog-service
+  VERSION: latest
+
 jobs:
   build:
     name: Build and Test
@@ -33,3 +39,25 @@ jobs:
         run: |
           chmod +x mvnw
           ./mvnw package
+  package:
+    name: Package and Publish
+    if: ${{ github.ref == 'refs/heads/master' }}
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: maven
+      - name: Build container image
+        run: |
+          chmod +x mvnw
+          ./mvnw spring-boot:build-image
