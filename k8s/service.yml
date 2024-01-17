@@ -1,0 +1,14 @@
+apiVersion: v1 #❶
+kind: Service #❷
+metadata:
+  name: catalog-service #❸
+  labels:
+    app: catalog-service #❹
+spec:
+  type: ClusterIP #❺
+  selector:
+    app: catalog-service #❻
+  ports:
+    - protocol: TCP #❼
+      port: 80 #❽
+      targetPort: 9001 #❾

@@ -6,6 +6,7 @@ server:
     threads:
       max: 50
       min-spare: 5
+  shutdown: graceful
 
 polar:
   greeting: "This is greeting from [local/default] application.yml"
@@ -33,6 +34,8 @@ spring:
     hikari:
       connection-timeout: 2000 #ms
       maximum-pool-size: 5
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
 
 management:
   endpoints:
